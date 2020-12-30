@@ -14,6 +14,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonbrew/paymints-auth-library.git"
+  },
   "license": "0BSD",
   "dependencies": {
     "bootstrap": "^4.5.3",
