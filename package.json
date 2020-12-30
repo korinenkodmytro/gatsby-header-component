@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lemonbrew/paymints-auth-library.git"
+    "url": "git+https://github.com/lemonbrew/lemonbrew-gatsby-header.git"
   },
   "license": "0BSD",
   "dependencies": {
