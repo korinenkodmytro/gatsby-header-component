@@ -1,7 +1,6 @@
 {
-  "name": "lemonbrew-gatsby-header",
+  "name": "@lemonbrew/lemonbrew-gatsby-header",
   "version": "1.0.0",
-  "private": true,
   "description": "Lemonbrew Gatsby Header",
   "author": "DmytroKorinenko",
   "keywords": [
@@ -13,6 +12,10 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonbrew/lemonbrew-gatsby-header.git"
   },
   "license": "0BSD",
   "dependencies": {
