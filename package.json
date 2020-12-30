@@ -1,0 +1,27 @@
+{
+  "name": "lemonbrew-gatsby-header",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lemonbrew Gatsby Header",
+  "author": "DmytroKorinenko",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "license": "0BSD",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "gatsby": "^2.26.1",
+    "gatsby-plugin-sass": "^2.8.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^16.13.1"
+  }
+}
