@@ -1,7 +1,7 @@
 {
   "name": "@lemonbrew/lemonbrew-gatsby-header",
-  "version": "1.0.2",
-  "description": "Lemonbrew Website Header",
+  "version": "1.0.3",
+  "description": "Lemonbrew Gatsby Header",
   "main": "index.js",
   "author": "DmytroKorinenko",
   "keywords": [
