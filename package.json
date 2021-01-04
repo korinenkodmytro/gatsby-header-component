@@ -1,7 +1,8 @@
 {
   "name": "@lemonbrew/lemonbrew-gatsby-header",
   "version": "1.0.2",
-  "description": "Lemonbrew Gatsby Header",
+  "description": "Lemonbrew Website Header",
+  "main": "index.js",
   "author": "DmytroKorinenko",
   "keywords": [
     "gatsby"
@@ -12,6 +13,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
