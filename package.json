@@ -22,7 +22,7 @@
     "url": "git+https://github.com/lemonbrew/lemonbrew-gatsby-header.git"
   },
   "license": "0BSD",
-  "dependencies": {
+  "devDependencies": {
     "bootstrap": "^4.5.3",
     "gatsby": "^2.26.1",
     "gatsby-plugin-sass": "^2.8.0",
@@ -30,5 +30,6 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1"
-  }
+  },
+  "dependencies": {}
 }
