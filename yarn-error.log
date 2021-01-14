@@ -1,0 +1,76 @@
+Arguments: 
+  E:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\dimad\bin;C:\Python39\Scripts;C:\Python39;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;E:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin;C:\Users\dimad\AppData\Local\Microsoft\WindowsApps;C:\Users\dimad\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dimad\AppData\Local\GitHubDesktop\bin;C:\Users\dimad\AppData\Roaming\npm;C:\Users\dimad\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.19.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\dimad\Desktop\lemonbrew-gatsby-header\package.json: Unexpected token / in JSON at position 610
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@lemonbrew/lemonbrew-gatsby-header",
+    "version": "1.0.7",
+    "description": "Lemonbrew Gatsby Header",
+    "main": "index.js",
+    "author": "DmytroKorinenko",
+    "keywords": [
+      "gatsby"
+    ],
+    "scripts": {
+      "develop": "gatsby develop",
+      "start": "gatsby develop",
+      "build": "gatsby build",
+      "serve": "gatsby serve",
+      "clean": "gatsby clean"
+    },
+    "publishConfig": {
+      "registry": "https://npm.pkg.github.com/"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lemonbrew/lemonbrew-gatsby-header.git"
+    },
+    "license": "0BSD",
+    "peerDependencies": {
+      // "gatsby": "^2.26.1",
+      // "gatsby-plugin-sass": "^2.8.0",
+      // "node-sass": "^4.14.1",
+      // "react": "^16.13.1",
+      // "react-bootstrap": "^1.4.0",
+      // "react-dom": "^16.13.1"
+    },
+    "dependencies": {"gatsby": "^2.26.1",
+      "gatsby-plugin-sass": "^2.8.0",
+      "node-sass": "^4.14.1",
+      "react": "^16.13.1",
+      "react-bootstrap": "^1.4.0",
+      "react-dom": "^16.13.1"},
+    "bit": {
+      "env": {
+        "compiler": "bit.envs/compilers/react@1.0.21"
+      },
+      "componentsDefaultDirectory": "components/{name}",
+      "packageManager": "yarn"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
