@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lemonbrew/lemonbrew-gatsby-header.git"
+    "url": "git+https://github.com/korinenkodmytro/gatsby-header-component"
   },
   "license": "0BSD",
   "devDependencies": {
