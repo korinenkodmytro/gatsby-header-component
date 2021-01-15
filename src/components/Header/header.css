@@ -102,6 +102,7 @@ a.nav-link:hover span {
 
 a.nav-link span {
   padding-top: 10px;
+  font-weight: 600;
 }
 
 .dropdown-list__open {
@@ -172,6 +173,7 @@ ul.nav-list li {
 .navButton a {
   text-decoration: none;
   color: #4d4d4f;
+  font-weight: 600;
 }
 
 .navButton:hover {

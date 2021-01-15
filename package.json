@@ -1,7 +1,7 @@
 {
-  "name": "@lemonbrew/lemonbrew-gatsby-header",
+  "name": "@lemonbrew/gatsby-components-lib",
   "version": "1.0.8",
-  "description": "Lemonbrew Gatsby Header",
+  "description": "Gatsby Lemonbrew Components Library",
   "main": "index.js",
   "author": "DmytroKorinenko",
   "keywords": [
@@ -24,15 +24,17 @@
   },
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "git+https://github.com/korinenkodmytro/lemonbrew-gatsby-header.git"
-=======
-    "url": "git+https://github.com/korinenkodmytro/gatsby-header-component"
->>>>>>> f7fa19af0e1d1d0df21ae1c53253c37a5d0e03ab
+    "url": "https://github.com/korinenkodmytro/gatsby-components-lib.git"
   },
   "license": "0BSD",
   "peerDependencies": {},
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -41,6 +43,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-fontawesome-css": "^1.0.0",
     "gatsby-plugin-sass": "^2.8.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
