@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7fa19af0e1d1d0df21ae1c53253c37a5d0e03ab
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
+<<<<<<< HEAD
     'plugin:gatsby/recommended',
+=======
+    'plugin:react/recommended',
+>>>>>>> f7fa19af0e1d1d0df21ae1c53253c37a5d0e03ab
     'plugin:prettier/recommended'
   ],
   parserOptions: {
@@ -11,6 +19,10 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
+<<<<<<< HEAD
+=======
+      /
+>>>>>>> f7fa19af0e1d1d0df21ae1c53253c37a5d0e03ab
     }
   },
   rules: {
