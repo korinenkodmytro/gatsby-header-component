@@ -22,10 +22,6 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/korinenkodmytro/gatsby-components-lib.git"
-  },
   "license": "0BSD",
   "peerDependencies": {},
   "dependencies": {
@@ -45,6 +41,7 @@
     "gatsby": "^2.26.1",
     "gatsby-plugin-fontawesome-css": "^1.0.0",
     "gatsby-plugin-sass": "^2.8.0",
+    "gatsby-source-fontawesome": "^0.0.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",

@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sass',
     `gatsby-plugin-fontawesome-css`,
+    `gatsby-source-fontawesome`,
     {
       resolve: `gatsby-plugin-typescript`,
       options: {

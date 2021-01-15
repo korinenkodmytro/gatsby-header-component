@@ -1,8 +1,11 @@
 import React from 'react'
 import Link from 'gatsby-link'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './footer.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+
+import './footer.css'
 import logoImage from './White-LB-Logo_H.png'
 
 const LinkComp = ({ path, text }) => {
@@ -25,13 +28,19 @@ const Footer = () => {
             <ul className='footer-list'>
               <li className='footer-list-item'>
                 <a href='tel:8335366627' className='footer-list-item__link'>
-                  <i className='fas fa-phone-alt footer-list-item__link__icon'></i>
+                  <FontAwesomeIcon
+                    icon={faPhoneAlt}
+                    className='fas fa-phone-alt footer-list-item__link__icon'
+                  />
                   833-536-6627
                 </a>
               </li>
               <li className='footer-list-item'>
                 <a href='mailto:support@lemonbrew.com' className='footer-list-item__link'>
-                  <i className='fas fa-envelope footer-list-item__link__icon'></i>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className='fas fa-phone-alt footer-list-item__link__icon'
+                  />
                   support@lemonbrew.com
                 </a>
               </li>
@@ -83,17 +92,17 @@ const Footer = () => {
           </div>
           <div className='bottom-footer-social'>
             <a href='www.facebook.com/lemonbr3w' className='bottom-footer-social__icon'>
-              <i className='fab fa-facebook-f'></i>
+              <FontAwesomeIcon icon={faFacebookF} className='bottom-footer-social__icon' />
             </a>
             <a href='www.instagram.com/lemonbrew' className='bottom-footer-social__icon'>
-              <i className='fab fa-instagram'></i>
+              <FontAwesomeIcon icon={faInstagram} className='bottom-footer-social__icon' />
             </a>
 
             <a
               href='https://www.linkedin.com/company/lemonbrew/?viewAsMember=true'
               className='bottom-footer-social__icon'
             >
-              <i className='fab fa-linkedin-in'></i>
+              <FontAwesomeIcon icon={faLinkedin} className='bottom-footer-social__icon' />
             </a>
           </div>
         </div>
