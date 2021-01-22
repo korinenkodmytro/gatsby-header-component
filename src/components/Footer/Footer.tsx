@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
@@ -11,9 +10,9 @@ import logoImage from './White-LB-Logo_H.png'
 const LinkComp = ({ path, text }) => {
   return (
     <li className='footer-list-item'>
-      <Link className='footer-list-item__link' to={path}>
+      <a className='footer-list-item__link' href={path}>
         {text}
-      </Link>
+      </a>
     </li>
   )
 }
@@ -49,33 +48,45 @@ const Footer = () => {
           <div className='column'>
             <h2 className='footer-header'>What's Brewing?</h2>
             <ul className='footer-list'>
-              <LinkComp path='/' text='About Us' />
-              <LinkComp path='/' text='Blog' />
-              <LinkComp path='/' text='FAQ' />
-              <LinkComp path='/' text='Join the BrewCrew' />
-              <LinkComp path='/' text='Press' />
+              <LinkComp path='https://www.lemonbrew.com/about-us' text='About Us' />
+              <LinkComp path='https://www.lemonbrew.com/blog' text='Blog' />
+              <LinkComp path='https://www.lemonbrew.com/faqs' text='FAQ' />
+              <LinkComp
+                path='https://www.lemonbrew.com/join-the-brewcrew'
+                text='Join the BrewCrew'
+              />
+              <LinkComp path='https://www.lemonbrew.com/press' text='Press ' />
             </ul>
           </div>
           <div className='column'>
             <h2 className='footer-header'>Services</h2>
             <ul className='footer-list'>
-              <LinkComp path='/' text='LemonBrew Real Estate' />
-              <LinkComp path='/' text='LemonBrew Lending' />
-              <LinkComp path='/' text='LemonBrew Abstract' />
-              <LinkComp path='/' text='LemonBrew Insurance' />
-              <LinkComp path='/' text='For Real Estate Agents' />
-              <LinkComp path='/' text='LemonBrew Pay' />
+              <LinkComp path='https://www.lemonbrew.com/realestate' text='LemonBrew Real Estate ' />
+              <LinkComp path='https://www.lemonbrew.com/lending' text='LemonBrew Lending' />
+              <LinkComp path='https://www.lemonbrew.com/abstract' text='LemonBrew Abstract' />
+              <LinkComp path='https://www.lemonbrew.com/insurance' text='LemonBrew Insurance' />
+              <LinkComp path='https://www.lemonbrew.com/agents' text='For Real Estate Agents' />
+              <LinkComp path='https://www.lemonbrew.com/lemonbrewpay' text='LemonBrew Pay' />
             </ul>
           </div>
           <div className='column'>
             <h2 className='footer-header'>Legal</h2>
             <ul className='footer-list'>
-              <LinkComp path='/' text='Privacy Policy' />
-              <LinkComp path='/' text='Terms of Use' />
-              <LinkComp path='/' text='Licenses' />
-              <LinkComp path='/' text='NMLS Access' />
-              <LinkComp path='/' text='Notice to Consumers' />
-              <LinkComp path='/' text='Affiliated Business Agreement' />
+              <LinkComp path='https://www1.lemonbrew.com/privacy-policy' text='Privacy Policy' />
+              <LinkComp path='https://www1.lemonbrew.com/terms-of-use' text='Terms of Use' />
+              <LinkComp path='https://www1.lemonbrew.com/licenses' text='Licenses' />
+              <LinkComp
+                path='http://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/198414'
+                text='NMLS Access'
+              />
+              <LinkComp
+                path='https://www1.lemonbrew.com/notice-to-consumers'
+                text='Notice to Consumers'
+              />
+              <LinkComp
+                path='https://www1.lemonbrew.com/affiliated-businesses'
+                text='Affiliated Business Agreement'
+              />
             </ul>
           </div>
         </div>
