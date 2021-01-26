@@ -5,120 +5,6 @@ import styled, { createGlobalStyle } from 'styled-components'
 import logoImage from './White-LB-Logo_H.png'
 import logoWhite from './logo_white.png'
 
-// const GlobalStyle = createGlobalStyle`
-// /* Import Poppins Font */
-// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-// /* Change Defautlt style Settings */
-
-// * {
-//   margin: 0;
-//   padding: 0;
-// }
-
-// /* Sticky Header */
-
-// .sticky-activated {
-//   background: #fff;
-//   transition: ease-in-out 0.5s all;
-//   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-// }
-
-// .header-main.sticky-activated .nav-link {
-//   color: #6d7783;
-// }
-// .header-main.sticky-activated .nav-link.active {
-//   color: #13a24a;
-// }
-// .header-main.sticky-activated .nav-link.active span {
-//   border-top: 2px solid #13a24a;
-// }
-// .header-main.sticky-activated .nav-link:hover span {
-//   border-top: 2px solid #13a24a;
-//   color: #13a24a;
-// }
-
-// .header-main.sticky-activated .compnay-logo-white-bg {
-//   display: block;
-// }
-
-// .header-main.sticky-activated .compnay-logo-dark-bg {
-//   display: none;
-// }
-
-// /* Animated Hamburger Menu */
-
-// .header-main .menu-icon {
-//   cursor: pointer;
-//   display: inline-block;
-//   padding: 28px 20px;
-//   position: relative;
-//   user-select: none;
-//   display: none;
-// }
-
-// .header-main .menu-icon .navicon {
-//   background: #13a24a;
-//   display: block;
-//   height: 2px;
-//   position: relative;
-//   transition: all 0.2s ease-out;
-//   width: 18px;
-// }
-
-// .header-main .menu-icon .navicon:before,
-// .header-main .menu-icon .navicon:after {
-//   background: #13a24a;
-//   content: '';
-//   display: block;
-//   height: 100%;
-//   position: absolute;
-//   transition: all 0.2s ease-out;
-//   width: 100%;
-// }
-
-// .header-main .menu-icon .navicon:before {
-//   top: 5px;
-// }
-
-// .header-main .menu-icon .navicon:after {
-//   top: -5px;
-// }
-
-// /* menu btn */
-
-// .header-main .menu-btn {
-//   display: none;
-// }
-
-// .header-main .menu-btn:checked ~ .menu {
-//   max-height: 340px;
-// }
-
-// .header-main .menu-btn:checked ~ .menu-icon .navicon {
-//   background: transparent;
-// }
-
-// .header-main .menu-btn:checked ~ .menu-icon .navicon:before {
-//   transform: rotate(45deg);
-// }
-
-// .header-main .menu-btn:checked ~ .menu-icon .navicon:after {
-//   transform: rotate(-45deg);
-// }
-
-// .header-main .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-// .header-main .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-//   top: 0;
-// }
-// .dropdown-arrow:before {
-//   content: '\e800';
-//   font-family: 'fontello';
-//   font-size: 8px;
-//   padding-left: 5px;
-// }
-// `
-
 const HeaderMain = styled.div`
   position: fixed;
   width: 100%;
@@ -130,34 +16,25 @@ const HeaderMain = styled.div`
   letter-spacing: 0;
   padding: 0;
 
-  /* Sticky Header */
-
-  .sticky-activated {
-    background: #fff;
-    transition: ease-in-out 0.5s all;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  .menu-btn:checked ~ .menu {
+    max-height: 340px;
   }
 
-  .header-main.sticky-activated .nav-link {
-    color: #6d7783;
-  }
-  .header-main.sticky-activated .nav-link.active {
-    color: #13a24a;
-  }
-  .header-main.sticky-activated .nav-link.active span {
-    border-top: 2px solid #13a24a;
-  }
-  .header-main.sticky-activated .nav-link:hover span {
-    border-top: 2px solid #13a24a;
-    color: #13a24a;
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
   }
 
-  .header-main.sticky-activated .compnay-logo-white-bg {
-    display: block;
+  .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(45deg);
   }
 
-  .header-main.sticky-activated .compnay-logo-dark-bg {
-    display: none;
+  .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(-45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
   }
   @media (max-width: 1100px) {
     background-color: white;
@@ -250,6 +127,34 @@ const DropdownList = styled.ul`
   white-space: nowrap;
 `
 
+const NavButton = styled.button`
+  transition: all ease 0.5s;
+  color: #4d4d4f;
+  font-family: Poppins;
+  border-radius: 100px;
+  margin-left: 1rem;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 38px;
+  width: 130px;
+  background-color: #ffd149;
+  border: 1px solid #ffd149;
+  a {
+    text-decoration: none;
+    color: #4d4d4f;
+    font-weight: 600;
+  }
+  &:hover {
+    background-color: transparent;
+  }
+  &:hover a {
+    color: #ffd149;
+  }
+`
+
+const ToggleMenu
+
 const Header = () => {
   // Activates sticky header
 
@@ -282,7 +187,7 @@ const Header = () => {
 
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <HeaderMain className='header-main'>
         <HeaderContainer>
           <div>
@@ -322,109 +227,124 @@ const Header = () => {
               </Dropdown>
 
               <Dropdown>
-                <NavLink href='https://www.lemonbrew.com/realestate/'>
+                <NavLink className='nav-link' href='https://www.lemonbrew.com/realestate/'>
                   <span>
                     Real Estate
-                    <span className='dropdown-arrow' onClick={() => openDropdownHandler()}></span>
+                    <DropdownArrow
+                      className='dropdown-arrow'
+                      onClick={() => openDropdownHandler()}
+                    ></DropdownArrow>
                   </span>
                 </NavLink>
                 <DropdownList className='dropdown-list'>
                   <li>
-                    <a className='nav-link' href='https://app.lemonbrew.com/signup/buyer'>
+                    <NavLink className='nav-link' href='https://app.lemonbrew.com/signup/buyer'>
                       Buyer
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className='nav-link' href='https://app.lemonbrew.com/signup/seller'>
+                    <NavLink className='nav-link' href='https://app.lemonbrew.com/signup/seller'>
                       Seller
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className='nav-link' href='https://www.lemonbrew.com/agents/'>
+                    <NavLink className='nav-link' href='https://www.lemonbrew.com/agents/'>
                       For Real Estate Agents
-                    </a>
+                    </NavLink>
                   </li>
                 </DropdownList>
               </Dropdown>
-              <li className='dropdown'>
-                <a className='nav-link' href='https://www.lemonbrew.com/lending/'>
+              <Dropdown className='dropdown'>
+                <NavLink className='nav-link' href='https://www.lemonbrew.com/lending/'>
                   <span>
                     Lending
-                    <span className='dropdown-arrow' onClick={() => openDropdownHandler()}></span>
+                    <DropdownArrow
+                      className='dropdown-arrow'
+                      onClick={() => openDropdownHandler()}
+                    ></DropdownArrow>
                   </span>
-                </a>
-                <ul className='dropdown-list'>
+                </NavLink>
+                <DropdownList className='dropdown-list'>
                   <li>
-                    <a className='nav-link' href='https://www.lemonbrew.com/lending/purchase/'>
+                    <NavLink
+                      className='nav-link'
+                      href='https://www.lemonbrew.com/lending/purchase/'
+                    >
                       Purchase
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className='nav-link' href='https://www.lemonbrew.com/lending/refinance/'>
+                    <NavLink
+                      className='nav-link'
+                      href='https://www.lemonbrew.com/lending/refinance/'
+                    >
                       Refinance
-                    </a>
+                    </NavLink>
                   </li>
-                </ul>
-              </li>
+                </DropdownList>
+              </Dropdown>
 
-              <li className='dropdown'>
-                <a className='nav-link' href='https://www.lemonbrew.com/abstract/'>
+              <Dropdown className='dropdown'>
+                <NavLink className='nav-link' href='https://www.lemonbrew.com/abstract/'>
                   <span>
                     Title Services
-                    <span className='dropdown-arrow' onClick={() => openDropdownHandler()}></span>
+                    <DropdownArrow
+                      className='dropdown-arrow'
+                      onClick={() => openDropdownHandler()}
+                    ></DropdownArrow>
                   </span>
-                </a>
-                <ul className='dropdown-list'>
+                </NavLink>
+                <DropdownList className='dropdown-list'>
                   <li>
-                    <a
+                    <NavLink
                       className='nav-link'
                       href='https://connect.qualia.com/quote-widget/bNTT2kGnbu2J4QqTB/'
                     >
                       Get a Quote
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className='nav-link' href='https://www.lemonbrew.com/lemonbrewpay/'>
+                    <NavLink className='nav-link' href='https://www.lemonbrew.com/lemonbrewpay/'>
                       Make a Transfer
-                    </a>
+                    </NavLink>
                   </li>
-                </ul>
-              </li>
+                </DropdownList>
+              </Dropdown>
 
               <li className='dropdown'>
-                <a className='nav-link' href='https://www.lemonbrew.com/insurance/'>
+                <NavLink className='nav-link' href='https://www.lemonbrew.com/insurance/'>
                   <span>
                     Home Insurance
                     <span className='dropdown-arrow' onClick={() => openDropdownHandler()}></span>
                   </span>
-                </a>
+                </NavLink>
                 <ul className='dropdown-list'>
                   <li>
-                    <a
+                    <NavLink
                       className='nav-link'
                       href='https://www1.lemonbrew.com/insurance/get-a-quote-lemonbrew-insurance/'
                     >
                       Get a Quote
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className='nav-link' href='https://portald22.csr24.com/mvc/893477248'>
+                    <NavLink className='nav-link' href='https://portald22.csr24.com/mvc/893477248'>
                       Client Portal
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </li>
 
               <li>
-                <a className='nav-link' href='https://www.lemonbrew.com/contact-us/'>
+                <NavLink className='nav-link' href='https://www.lemonbrew.com/contact-us/'>
                   <span>Contact</span>
-                </a>
+                </NavLink>
               </li>
 
-              <li className='navButtonLi'>
-                <button className='navButton'>
+              <li>
+                <NavButton>
                   <a href='tel:8335366627'>Call Us</a>
-                </button>
+                </NavButton>
               </li>
             </NavList>
           </NavContainer>
