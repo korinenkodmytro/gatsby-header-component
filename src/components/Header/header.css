@@ -125,6 +125,7 @@ a.nav-link span {
   font-weight: 400;
   text-transform: none;
   line-height: 30px;
+  white-space: nowrap;
 }
 .dropdown-list .nav-link {
   color: #6d7783;
@@ -260,7 +261,7 @@ ul.nav-list li {
 
 /* Mobile Layout */
 
-@media (max-width: 375px) {
+@media (max-width: 1100px) {
   .header-main {
     background-color: white;
     padding: 1rem 0;
