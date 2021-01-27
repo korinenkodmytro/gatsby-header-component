@@ -1,20 +1,91 @@
-import React, { useEffect } from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import React, { useState } from 'react'
+import styled, { createGlobalStyle, css } from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 // import './header.css'
 import logoImage from './White-LB-Logo_H.png'
 import logoWhite from './logo_white.png'
 
+const GlobalStyle = createGlobalStyle`
+/* Import Poppins Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    height:200vh;
+    background: teal;
+    font-family: Poppins, Sans-Serif;
+    
+    .dropdown-arrow {
+      font-size: 12px;
+  padding-left: 5px;
+    }
+  }
+  
+
+`
 const HeaderMain = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  font-family: Poppins;
+  font-family: Poppins, san-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   padding: 0;
+  background: ${(props: any) => (props.inverse ? 'transparent' : 'white')};
+  .compnay-logo-white-bg {
+    display: none;
+  }
+
+  /* Animated Hamburger Menu */
+
+  .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    display: none;
+  }
+
+  .menu-icon .navicon {
+    background: #13a24a;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: all 0.2s ease-out;
+    width: 18px;
+  }
+
+  .menu-icon .navicon:before,
+  .menu-icon .navicon:after {
+    background: #13a24a;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+
+  .menu-icon .navicon:before {
+    top: 5px;
+  }
+
+  .menu-icon .navicon:after {
+    top: -5px;
+  }
+
+  /* menu btn */
+  .menu-btn {
+    display: none;
+  }
 
   .menu-btn:checked ~ .menu {
     max-height: 340px;
@@ -38,7 +109,8 @@ const HeaderMain = styled.div`
   }
   @media (max-width: 1100px) {
     background-color: white;
-    padding: 1rem 0;
+    padding: 1rem 0 1rem 0.5rem;
+    height: 60px;
     .compnay-logo-white-bg {
       display: block;
       width: 150px;
@@ -51,7 +123,38 @@ const HeaderMain = styled.div`
       display: block;
     }
   }
+
+  /* Sticky Header */
+
+  .sticky-activated {
+    background: #fff;
+    transition: ease-in-out 0.5s all;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  }
+
+  .sticky-activated .nav-link {
+    color: #6d7783;
+  }
+  .sticky-activated .nav-link.active {
+    color: #13a24a;
+  }
+  .sticky-activated .nav-link.active span {
+    border-top: 2px solid #13a24a;
+  }
+  .sticky-activated .nav-link:hover span {
+    border-top: 2px solid #13a24a;
+    color: #13a24a;
+  }
+
+  .sticky-activated .compnay-logo-white-bg {
+    display: block;
+  }
+
+  .sticky-activated .compnay-logo-dark-bg {
+    display: none;
+  }
 `
+
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -60,11 +163,24 @@ const HeaderContainer = styled.div`
   width: 100%;
   margin: 0 auto;
 `
+
 const NavContainer = styled.div`
   @media (max-width: 1100px) {
-    display: none;
+    ${(props: any) =>
+      props.open
+        ? css`
+            display: block;
+            position: absolute;
+            top: 90px;
+            width: 100%;
+            height: 100vh;
+          `
+        : css`
+            display: none;
+          `}
   }
 `
+
 const NavList = styled.ul`
   list-style: none;
   line-height: 90px;
@@ -72,39 +188,48 @@ const NavList = styled.ul`
   li {
     display: inline-block;
   }
-`
-const Dropdown = styled.li`
-  position: relative;
-  color: white;
-  padding: 0;
+  @media (max-width: 1100px) {
+    background-color: white;
+
+    display: grid;
+    text-align: center;
+    line-height: 40px;
+    a.nav-link {
+      color: #293340;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: 0px;
+    }
+  }
 `
 
 const NavLink = styled.a`
-  color: white;
+  color: ${(props: any) => (props.inverse ? 'white' : ' #6d7783')};
   padding: 0;
   margin: 0 1rem;
   text-decoration: none;
+
   &:hover span {
-    border-top: 2px solid white;
+    border-top: ${(props: any) => (props.inverse ? ' 2px solid white' : '2px solid #13a24a')};
+    color: ${(props: any) => (props.inverse ? 'white' : ' #13a24a')};
   }
   span {
     padding-top: 10px;
     font-weight: 600;
   }
+  @media (max-width: 1100px) {
+    line-height: 50px;
+  }
 `
 
-const DropdownArrow = styled.span`
-  @font-face {
-    font-family: 'fontello';
-    src: url('.//fontello.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  &::before {
-    content: '\e800';
-    font-family: 'fontello';
-    font-size: 8px;
-    padding-left: 5px;
+const Dropdown = styled.li`
+  position: relative;
+  color: white;
+  padding: 0;
+  &:hover .dropdown-list {
+    display: grid;
+    visibility: visible;
   }
 `
 
@@ -125,6 +250,25 @@ const DropdownList = styled.ul`
   text-transform: none;
   line-height: 30px;
   white-space: nowrap;
+  .nav-link {
+    color: #6d7783;
+  }
+  .nav-link:hover {
+    color: #13a24a;
+  }
+
+  @media (max-width: 1100px) {
+    position: relative;
+    display: none;
+    visibility: hidden;
+    top: 0;
+    text-align: center;
+    padding-top: 0;
+    li a.nav-link {
+      font-weight: 500;
+      color: #617186 !important;
+    }
+  }
 `
 
 const NavButton = styled.button`
@@ -151,65 +295,67 @@ const NavButton = styled.button`
   &:hover a {
     color: #ffd149;
   }
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `
 
-const ToggleMenu
+const Header = ({ inverse }) => {
+  const [navContainerOpen, setNavContainerOpen] = useState(false)
 
-const Header = () => {
   // Activates sticky header
+  // const [sticky, setSticky] = useState(false)
 
-  useEffect(() => {
-    const header = document.querySelector('.header-main')
-    if (window.innerWidth > 600) {
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset === 0) {
-          header.classList.remove('sticky-activated')
-        }
+  // useEffect(() => {
+  //   const header = document.querySelector('.header-main')
+  //   if (window.innerWidth > 600) {
+  //     window.addEventListener('scroll', () => {
+  //       if (window.pageYOffset === 0) {
+  //         // header.classList.remove('sticky-activated')
+  //         setSticky(false)
+  //       }
 
-        if (window.pageYOffset > 10) {
-          header.classList.add('sticky-activated')
-        }
-      })
-    }
-  }, [])
+  //       if (window.pageYOffset > 10) {
+  //         // header.classList.add('sticky-activated')
+  //         setSticky(true)
+  //       }
+  //     })
+  //   }
+  // }, [])
 
-  const openDropdownHandler = () => {
+  const openDropdownHandler = (event: any) => {
     const dropdown = document.querySelector('.dropdown-list')
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 1100) {
+      event.preventDefault()
       dropdown.classList.toggle('dropdown-list__open')
     }
   }
 
   const toggleMenu = () => {
-    const nav = document.querySelector('.nav-container')
-    nav.classList.toggle('nav-container__open')
+    // const nav = document.querySelector('.nav-container')
+    // nav.classList.toggle('nav-container__open')
+    setNavContainerOpen(!navContainerOpen)
   }
 
   return (
     <>
-      {/* <GlobalStyle /> */}
-      <HeaderMain className='header-main'>
+      <GlobalStyle />
+      <HeaderMain inverse={inverse} className='header-main'>
         <HeaderContainer>
           <div>
-            <img
-              src={logoImage}
-              alt='LemonBrew Logo'
-              width='200'
-              className='compnay-logo-dark-bg'
-            />
-            <img
-              src={logoWhite}
-              alt='LemonBrew Logo'
-              width='200'
-              className='compnay-logo-white-bg'
-            />
+            <img src={inverse ? logoImage : logoWhite} alt='LemonBrew Logo' width='200' />
           </div>
-          <NavContainer>
+          <NavContainer open={navContainerOpen} className='nav-container'>
             <NavList>
               <Dropdown>
-                <NavLink className='nav-link' shref='https://www.lemonbrew.com/'>
+                <NavLink inverse={inverse} className='nav-link' href='https://www.lemonbrew.com/'>
                   <span>
-                    Company <DropdownArrow onClick={() => openDropdownHandler()}></DropdownArrow>
+                    Company{' '}
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      className='dropdown-arrow'
+                      onClick={(event) => openDropdownHandler(event)}
+                    ></FontAwesomeIcon>
                   </span>
                 </NavLink>
                 <DropdownList className='dropdown-list'>
@@ -227,13 +373,18 @@ const Header = () => {
               </Dropdown>
 
               <Dropdown>
-                <NavLink className='nav-link' href='https://www.lemonbrew.com/realestate/'>
+                <NavLink
+                  inverse={inverse}
+                  className='nav-link'
+                  href='https://www.lemonbrew.com/realestate/'
+                >
                   <span>
                     Real Estate
-                    <DropdownArrow
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
                       className='dropdown-arrow'
-                      onClick={() => openDropdownHandler()}
-                    ></DropdownArrow>
+                      onClick={(event) => openDropdownHandler(event)}
+                    ></FontAwesomeIcon>
                   </span>
                 </NavLink>
                 <DropdownList className='dropdown-list'>
@@ -255,13 +406,18 @@ const Header = () => {
                 </DropdownList>
               </Dropdown>
               <Dropdown className='dropdown'>
-                <NavLink className='nav-link' href='https://www.lemonbrew.com/lending/'>
+                <NavLink
+                  inverse={inverse}
+                  className='nav-link'
+                  href='https://www.lemonbrew.com/lending/'
+                >
                   <span>
                     Lending
-                    <DropdownArrow
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
                       className='dropdown-arrow'
-                      onClick={() => openDropdownHandler()}
-                    ></DropdownArrow>
+                      onClick={(event) => openDropdownHandler(event)}
+                    ></FontAwesomeIcon>
                   </span>
                 </NavLink>
                 <DropdownList className='dropdown-list'>
@@ -285,13 +441,18 @@ const Header = () => {
               </Dropdown>
 
               <Dropdown className='dropdown'>
-                <NavLink className='nav-link' href='https://www.lemonbrew.com/abstract/'>
+                <NavLink
+                  inverse={inverse}
+                  className='nav-link'
+                  href='https://www.lemonbrew.com/abstract/'
+                >
                   <span>
                     Title Services
-                    <DropdownArrow
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
                       className='dropdown-arrow'
-                      onClick={() => openDropdownHandler()}
-                    ></DropdownArrow>
+                      onClick={(event) => openDropdownHandler(event)}
+                    ></FontAwesomeIcon>
                   </span>
                 </NavLink>
                 <DropdownList className='dropdown-list'>
@@ -311,14 +472,22 @@ const Header = () => {
                 </DropdownList>
               </Dropdown>
 
-              <li className='dropdown'>
-                <NavLink className='nav-link' href='https://www.lemonbrew.com/insurance/'>
+              <Dropdown className='dropdown'>
+                <NavLink
+                  inverse={inverse}
+                  className='nav-link'
+                  href='https://www.lemonbrew.com/insurance/'
+                >
                   <span>
                     Home Insurance
-                    <span className='dropdown-arrow' onClick={() => openDropdownHandler()}></span>
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      className='dropdown-arrow'
+                      onClick={(event) => openDropdownHandler(event)}
+                    ></FontAwesomeIcon>
                   </span>
                 </NavLink>
-                <ul className='dropdown-list'>
+                <DropdownList className='dropdown-list'>
                   <li>
                     <NavLink
                       className='nav-link'
@@ -332,11 +501,15 @@ const Header = () => {
                       Client Portal
                     </NavLink>
                   </li>
-                </ul>
-              </li>
+                </DropdownList>
+              </Dropdown>
 
               <li>
-                <NavLink className='nav-link' href='https://www.lemonbrew.com/contact-us/'>
+                <NavLink
+                  inverse={inverse}
+                  className='nav-link'
+                  href='https://www.lemonbrew.com/contact-us/'
+                >
                   <span>Contact</span>
                 </NavLink>
               </li>
