@@ -1,31 +1,42 @@
 import React, { useState } from 'react'
 import styled, { createGlobalStyle, css } from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-// import './header.css'
 import logoImage from './White-LB-Logo_H.png'
 import logoWhite from './logo_white.png'
 
+type HeaderProps = {
+  inverse?: boolean
+  logoUrl?: string
+}
+
 const GlobalStyle = createGlobalStyle`
-/* Import Poppins Font */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 
-  body {
+  * {
+    
     margin: 0;
     padding: 0;
-    height:200vh;
-    background: teal;
-    font-family: Poppins, Sans-Serif;
-    
-    .dropdown-arrow {
-      font-size: 12px;
-  padding-left: 5px;
+  }
+
+  body {
+    font-family: "Poppins", "Helvetica", sans-serif;
+    .dropdown-list__open {
+    display: none;
+      @media (max-width: 1100px) {
+        display: grid;
+        visibility:visible !important;
+      } 
     }
   }
   
+  
+  .chevron__open {
+    @media (max-width: 1100px) {
+      transform: rotate(45deg) !important;
+      -webkit-transform: rotate(45deg) !important;
+    }
+  } 
+
 
 `
 const HeaderMain = styled.div`
@@ -110,7 +121,7 @@ const HeaderMain = styled.div`
   @media (max-width: 1100px) {
     background-color: white;
     padding: 1rem 0 1rem 0.5rem;
-    height: 60px;
+    height: 90px;
     .compnay-logo-white-bg {
       display: block;
       width: 150px;
@@ -122,36 +133,6 @@ const HeaderMain = styled.div`
     .menu-icon {
       display: block;
     }
-  }
-
-  /* Sticky Header */
-
-  .sticky-activated {
-    background: #fff;
-    transition: ease-in-out 0.5s all;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-  }
-
-  .sticky-activated .nav-link {
-    color: #6d7783;
-  }
-  .sticky-activated .nav-link.active {
-    color: #13a24a;
-  }
-  .sticky-activated .nav-link.active span {
-    border-top: 2px solid #13a24a;
-  }
-  .sticky-activated .nav-link:hover span {
-    border-top: 2px solid #13a24a;
-    color: #13a24a;
-  }
-
-  .sticky-activated .compnay-logo-white-bg {
-    display: block;
-  }
-
-  .sticky-activated .compnay-logo-dark-bg {
-    display: none;
   }
 `
 
@@ -172,6 +153,7 @@ const NavContainer = styled.div`
             display: block;
             position: absolute;
             top: 90px;
+            left: 0px;
             width: 100%;
             height: 100vh;
           `
@@ -190,7 +172,6 @@ const NavList = styled.ul`
   }
   @media (max-width: 1100px) {
     background-color: white;
-
     display: grid;
     text-align: center;
     line-height: 40px;
@@ -210,13 +191,15 @@ const NavLink = styled.a`
   margin: 0 1rem;
   text-decoration: none;
 
-  &:hover span {
-    border-top: ${(props: any) => (props.inverse ? ' 2px solid white' : '2px solid #13a24a')};
-    color: ${(props: any) => (props.inverse ? 'white' : ' #13a24a')};
-  }
   span {
     padding-top: 10px;
     font-weight: 600;
+  }
+  @media (min-width: 1100px) {
+    &:hover span {
+      border-top: ${(props: any) => (props.inverse ? ' 2px solid white' : '2px solid #13a24a')};
+      color: ${(props: any) => (props.inverse ? 'white' : ' #13a24a')};
+    }
   }
   @media (max-width: 1100px) {
     line-height: 50px;
@@ -227,9 +210,26 @@ const Dropdown = styled.li`
   position: relative;
   color: white;
   padding: 0;
-  &:hover .dropdown-list {
-    display: grid;
-    visibility: visible;
+  @media (min-width: 1100px) {
+    &:hover .dropdown-list {
+      display: grid;
+      visibility: visible;
+    }
+  }
+`
+const ChevronDown = styled.i`
+  border: ${(props: HeaderProps) => (props.inverse ? 'solid #e5e5e5' : ' solid #6d7783')};
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-bottom: 3px;
+  margin-left: 5px;
+  @media (max-width: 1100px) {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-bottom: 0;
   }
 `
 
@@ -300,40 +300,25 @@ const NavButton = styled.button`
   }
 `
 
-const Header = ({ inverse }) => {
+const Header: React.FC<HeaderProps> = ({
+  inverse = false,
+  logoUrl = 'https://www.lemonbrew.com/'
+}): JSX.Element => {
   const [navContainerOpen, setNavContainerOpen] = useState(false)
 
-  // Activates sticky header
-  // const [sticky, setSticky] = useState(false)
-
-  // useEffect(() => {
-  //   const header = document.querySelector('.header-main')
-  //   if (window.innerWidth > 600) {
-  //     window.addEventListener('scroll', () => {
-  //       if (window.pageYOffset === 0) {
-  //         // header.classList.remove('sticky-activated')
-  //         setSticky(false)
-  //       }
-
-  //       if (window.pageYOffset > 10) {
-  //         // header.classList.add('sticky-activated')
-  //         setSticky(true)
-  //       }
-  //     })
-  //   }
-  // }, [])
-
   const openDropdownHandler = (event: any) => {
-    const dropdown = document.querySelector('.dropdown-list')
+    const dropdown = document.getElementById(`${event.target.id}-dropdown`)
+    const chevron = document.getElementById(event.target.id)
+    const exists = document.getElementsByClassName('chevron__open')
     if (window.innerWidth < 1100) {
       event.preventDefault()
+      console.log(exists ? true : false)
+      chevron.classList.toggle('chevron__open')
       dropdown.classList.toggle('dropdown-list__open')
     }
   }
 
   const toggleMenu = () => {
-    // const nav = document.querySelector('.nav-container')
-    // nav.classList.toggle('nav-container__open')
     setNavContainerOpen(!navContainerOpen)
   }
 
@@ -342,30 +327,31 @@ const Header = ({ inverse }) => {
       <GlobalStyle />
       <HeaderMain inverse={inverse} className='header-main'>
         <HeaderContainer>
-          <div>
+          <a href={logoUrl}>
             <img src={inverse ? logoImage : logoWhite} alt='LemonBrew Logo' width='200' />
-          </div>
+          </a>
           <NavContainer open={navContainerOpen} className='nav-container'>
             <NavList>
               <Dropdown>
                 <NavLink inverse={inverse} className='nav-link' href='https://www.lemonbrew.com/'>
                   <span>
                     Company{' '}
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
+                    <ChevronDown
+                      inverse={inverse}
                       className='dropdown-arrow'
+                      id='company'
                       onClick={(event) => openDropdownHandler(event)}
-                    ></FontAwesomeIcon>
+                    ></ChevronDown>
                   </span>
                 </NavLink>
-                <DropdownList className='dropdown-list'>
+                <DropdownList id='company-dropdown' className='dropdown-list'>
                   <li>
                     <NavLink className='nav-link' href='https://www.lemonbrew.com/about-us/'>
                       About Us
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className='nav-link' href='https://wwww.lemonbrew.com/blog/'>
+                    <NavLink className='nav-link' href='https://www.lemonbrew.com/blog/'>
                       The Brew
                     </NavLink>
                   </li>
@@ -380,14 +366,15 @@ const Header = ({ inverse }) => {
                 >
                   <span>
                     Real Estate
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
+                    <ChevronDown
+                      inverse={inverse}
                       className='dropdown-arrow'
+                      id='real-estate'
                       onClick={(event) => openDropdownHandler(event)}
-                    ></FontAwesomeIcon>
+                    ></ChevronDown>
                   </span>
                 </NavLink>
-                <DropdownList className='dropdown-list'>
+                <DropdownList id='real-estate-dropdown' className='dropdown-list'>
                   <li>
                     <NavLink className='nav-link' href='https://app.lemonbrew.com/signup/buyer'>
                       Buyer
@@ -413,14 +400,15 @@ const Header = ({ inverse }) => {
                 >
                   <span>
                     Lending
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
+                    <ChevronDown
+                      inverse={inverse}
+                      id='lending'
                       className='dropdown-arrow'
                       onClick={(event) => openDropdownHandler(event)}
-                    ></FontAwesomeIcon>
+                    ></ChevronDown>
                   </span>
                 </NavLink>
-                <DropdownList className='dropdown-list'>
+                <DropdownList id='lending-dropdown' className='dropdown-list'>
                   <li>
                     <NavLink
                       className='nav-link'
@@ -448,14 +436,15 @@ const Header = ({ inverse }) => {
                 >
                   <span>
                     Title Services
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
+                    <ChevronDown
+                      inverse={inverse}
+                      id='title-services'
                       className='dropdown-arrow'
                       onClick={(event) => openDropdownHandler(event)}
-                    ></FontAwesomeIcon>
+                    ></ChevronDown>
                   </span>
                 </NavLink>
-                <DropdownList className='dropdown-list'>
+                <DropdownList id='title-services-dropdown' className='dropdown-list'>
                   <li>
                     <NavLink
                       className='nav-link'
@@ -480,14 +469,15 @@ const Header = ({ inverse }) => {
                 >
                   <span>
                     Home Insurance
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
+                    <ChevronDown
+                      inverse={inverse}
+                      id='home-insurance'
                       className='dropdown-arrow'
                       onClick={(event) => openDropdownHandler(event)}
-                    ></FontAwesomeIcon>
+                    ></ChevronDown>
                   </span>
                 </NavLink>
-                <DropdownList className='dropdown-list'>
+                <DropdownList id='home-insurance-dropdown' className='dropdown-list'>
                   <li>
                     <NavLink
                       className='nav-link'
